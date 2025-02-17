@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+    <!-- Definiciones de estilos -->
+    <defs>
+        <marker id="arrowhead-snow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#666"/>
+        </marker>
+    </defs>
+    
+    <!-- Copo de nieve de fondo -->
+    <g opacity="0.2" stroke="#87CEEB" stroke-width="2">
+        <!-- Rayos principales -->
+        <line x1="400" y1="50" x2="400" y2="150" />
+        <line x1="350" y1="75" x2="450" y2="125" />
+        <line x1="350" y1="125" x2="450" y2="75" />
+        <!-- Ramas pequeñas -->
+        <line x1="400" y1="80" x2="420" y2="90" />
+        <line x1="400" y1="80" x2="380" y2="90" />
+        <line x1="380" y1="100" x2="390" y2="120" />
+        <line x1="420" y1="100" x2="410" y2="120" />
+    </g>
+    
+    <!-- Título -->
+    <text x="400" y="40" text-anchor="middle" font-size="24" font-weight="bold" fill="#333">
+        Esquema en Copo de Nieve ❄️
+    </text>
+    
+    <!-- Tabla de Hechos -->
+    <rect x="300" y="200" width="200" height="250" fill="#FFE4B5" stroke="#000" rx="5"/>
+    <text x="400" y="230" text-anchor="middle" font-weight="bold">Hechos_Ventas</text>
+    <text x="320" y="260" font-size="14">
+        <tspan x="320" dy="0">ID_Venta</tspan>
+        <tspan x="320" dy="20">ID_Juego</tspan>
+        <tspan x="320" dy="20">ID_Plataforma</tspan>
+        <tspan x="320" dy="20">ID_Tiempo</tspan>
+        <tspan x="320" dy="20">ID_Región</tspan>
+        <tspan x="320" dy="20">NA_Sales</tspan>
+        <tspan x="320" dy="20">EU_Sales</tspan>
+        <tspan x="320" dy="20">JP_Sales</tspan>
+        <tspan x="320" dy="20">Global_Sales</tspan>
+    </text>
+    
+    <!-- Dimensiones principales -->
+    <!-- Dim_Juego -->
+    <rect x="50" y="230" width="180" height="130" fill="#B0E0E6" stroke="#000" rx="5"/>
+    <text x="140" y="260" text-anchor="middle" font-size="16" font-weight="bold">Dim_Juego</text>
+    <text x="70" y="290" font-size="14">
+        <tspan x="70" dy="0">ID_Juego</tspan>
+        <tspan x="70" dy="20">Nombre</tspan>
+        <tspan x="70" dy="20">ID_Género</tspan>
+        <tspan x="70" dy="20">ID_Publisher</tspan>
+    </text>
+    
+    <!-- Subdimensiones de Juego -->
+    <rect x="50" y="100" width="180" height="90" fill="#E6E6FA" stroke="#000" rx="5"/>
+    <text x="140" y="130" text-anchor="middle" font-size="16" font-weight="bold">Dim_Género</text>
+    <text x="70" y="160" font-size="14">
+        <tspan x="70" dy="0">ID_Género</tspan>
+        <tspan x="70" dy="20">Género</tspan>
+    </text>
+    
+    <rect x="50" y="400" width="180" height="90" fill="#E6E6FA" stroke="#000" rx="5"/>
+    <text x="140" y="430" text-anchor="middle" font-size="16" font-weight="bold">Dim_Publisher</text>
+    <text x="70" y="460" font-size="14">
+        <tspan x="70" dy="0">ID_Publisher</tspan>
+        <tspan x="70" dy="20">Publisher</tspan>
+    </text>
+    
+    <!-- Otras dimensiones -->
+    <rect x="570" y="150" width="180" height="90" fill="#B0E0E6" stroke="#000" rx="5"/>
+    <text x="660" y="180" text-anchor="middle" font-size="16" font-weight="bold">Dim_Tiempo</text>
+    <text x="590" y="210" font-size="14">
+        <tspan x="590" dy="0">ID_Tiempo</tspan>
+        <tspan x="590" dy="20">Año</tspan>
+    </text>
+    
+    <rect x="570" y="350" width="180" height="90" fill="#B0E0E6" stroke="#000" rx="5"/>
+    <text x="660" y="380" text-anchor="middle" font-size="16" font-weight="bold">Dim_Región</text>
+    <text x="590" y="410" font-size="14">
+        <tspan x="590" dy="0">ID_Región</tspan>
+        <tspan x="590" dy="20">Región</tspan>
+    </text>
+    
+    <!-- Conexiones principales -->
+    <line x1="230" y1="290" x2="300" y2="300" stroke="#666" stroke-width="2" marker-end="url(#arrowhead-snow)"/>
+    <line x1="570" y1="190" x2="500" y2="300" stroke="#666" stroke-width="2" marker-end="url(#arrowhead-snow)"/>
+    <line x1="570" y1="390" x2="500" y2="350" stroke="#666" stroke-width="2" marker-end="url(#arrowhead-snow)"/>
+    
+    <!-- Conexiones de normalización -->
+    <line x1="140" y1="190" x2="140" y2="227" stroke="#666" stroke-width="2" marker-end="url(#arrowhead-snow)"/>
+    <line x1="140" y1="400" x2="140" y2="365" stroke="#666" stroke-width="2" marker-end="url(#arrowhead-snow)"/>
+</svg>
