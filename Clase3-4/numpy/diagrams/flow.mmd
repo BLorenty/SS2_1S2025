@@ -1,0 +1,50 @@
+flowchart TD
+    subgraph Extract["EXTRACT (etl_1_extract.py)"]
+        A[Inicio Extract] --> B[Solicitar path del archivo CSV]
+        B --> C[Abrir archivo con csv.reader]
+        C --> D[Convertir datos a lista]
+        D --> E[Convertir lista a np.array]
+        E --> F{Verificar lectura}
+        F -->|Error| G[Retornar None]
+        F -->|Éxito| H[Mostrar primeros 5 registros]
+        H --> I[Retornar array NumPy]
+    end
+
+    subgraph Transform["TRANSFORM (etl_2_transform.py)"]
+        J[Recibir array NumPy] --> K[Eliminar fila de encabezados]
+        K --> L[Definir índices de columnas]
+        L --> M[Convertir datos numéricos]
+        M --> N[Procesar fechas]
+        
+        subgraph Dimensiones["Creación de Dimensiones"]
+            N --> O1[Crear diccionario de pasajeros únicos]
+            O1 --> O2[Convertir diccionario a array]
+            N --> P[Crear array de fechas único]
+            N --> Q[np.unique para otras dimensiones]
+            Q --> Q1[DimDepartureAirport]
+            Q --> Q2[DimArrivalAirport]
+            Q --> Q3[DimPilot]
+            Q --> Q4[DimFlightStatus]
+        end
+
+        Dimensiones --> R[Crear diccionarios de mapeo]
+        R --> S[Agregar IDs a dimensiones]
+        S --> T[Crear FactFlight]
+    end
+
+    subgraph Load["LOAD (etl_3_load.py)"]
+        U[Recibir arrays NumPy] --> V[Función bulk_insert_numpy]
+        V --> W[Definir columnas por tabla]
+        W --> X[Inserción masiva por tabla]
+        X --> Y{Verificar errores}
+        Y -->|Error| Z[Rollback]
+        Y -->|Éxito| AA[Commit]
+    end
+
+    Extract --> Transform
+    Transform --> Load
+
+    classDef process fill:#f9f,stroke:#333,stroke-width:2px
+    classDef decision fill:#bbf,stroke:#333,stroke-width:2px
+    class F,Y decision
+    class C,D,E,M,N,R,S process

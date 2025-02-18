@@ -1,0 +1,51 @@
+flowchart TD
+    subgraph NormalizacionFechas["Proceso de Normalización de Fechas"]
+        A[Inicio Normalización] --> B[Definir función parse_dates]
+        B --> C[Recibir fecha en string]
+        C --> D{Intentar formato MM/DD/YYYY}
+        D -->|Éxito| E[Convertir a YYYY-MM-DD]
+        D -->|Fallo| F{Intentar formato MM-DD-YYYY}
+        F -->|Éxito| E
+        F -->|Fallo| G[Retornar NaT]
+        E --> H[Aplicar función a columna 'Departure Date']
+    end
+
+    subgraph CreacionDimensiones["Creación de Dimensiones con IDs"]
+        I[Obtener valores únicos] -->|drop_duplicates| J[Crear DimDepartureDate]
+        J --> K[Asignar DepartureDateID secuencial]
+        K --> L[Extraer Year, Month, Day]
+        
+        I -->|drop_duplicates| M[Crear otras dimensiones]
+        M --> N[DimArrivalAirport]
+        M --> O[DimPilot]
+        M --> P[DimFlightStatus]
+        M --> Q[DimDepartureAirport]
+    end
+
+    subgraph MapeoIDs["Proceso de Mapeo de IDs"]
+        R[Inicio Mapeo] --> S[Crear diccionario de mapeo con set_index]
+        S --> T[Mapear DepartureDateID]
+        T --> U[Mapear ArrivalAirportID]
+        U --> V[Mapear PilotID]
+        V --> W[Mapear FlightStatusID]
+        W --> X[Mapear DepartureAirportID]
+    end
+
+    subgraph CreacionFactTable["Creación de Tabla de Hechos"]
+        Y[Seleccionar columnas relevantes] --> Z[Crear FactFlight]
+        Z --> AA[Passenger ID]
+        Z --> AB[DepartureDateID]
+        Z --> AC[ArrivalAirportID]
+        Z --> AD[PilotID]
+        Z --> AE[FlightStatusID]
+        Z --> AF[DepartureAirportID]
+    end
+
+    NormalizacionFechas --> CreacionDimensiones
+    CreacionDimensiones --> MapeoIDs
+    MapeoIDs --> CreacionFactTable
+
+    classDef process fill:#f9f,stroke:#333,stroke-width:2px
+    classDef decision fill:#bbf,stroke:#333,stroke-width:2px
+    class D,F decision
+    class B,E,K,S,Z process

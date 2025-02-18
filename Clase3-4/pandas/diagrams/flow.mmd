@@ -1,0 +1,51 @@
+flowchart TD
+    subgraph Extract["EXTRACT (etl_1_extract.py)"]
+        A[Inicio Extract] --> B[Solicitar path del archivo CSV]
+        B --> C{Intentar leer CSV}
+        C -->|Error| D[Mostrar error]
+        D --> E[Retornar 0]
+        C -->|Éxito| F[Crear DataFrame]
+        F --> G[Mostrar primeras y últimas 5 filas]
+        G --> H[Retornar DataFrame]
+    end
+
+    subgraph Transform["TRANSFORM (etl_2_transform.py)"]
+        I[Recibir DataFrame] --> J[Normalizar fechas]
+        J --> K[Crear dimensiones]
+        
+        subgraph Dimensiones["Creación de Dimensiones"]
+            K --> L1[DimDepartureDate]
+            L1 --> L1.1[Extraer año, mes, día]
+            K --> L2[DimArrivalAirport]
+            K --> L3[DimPilot]
+            K --> L4[DimFlightStatus]
+            K --> L5[DimDepartureAirport]
+            K --> L6[DimPassenger]
+        end
+
+        Dimensiones --> M[Crear relaciones con IDs]
+        M --> N[Crear FactFlight]
+        N --> O[Retornar todas las dimensiones y FactFlight]
+    end
+
+    subgraph Load["LOAD (etl_3_load.py)"]
+        P[Recibir datos transformados] --> Q[Conectar a base de datos]
+        
+        subgraph CargarDimensiones["Carga de Dimensiones"]
+            Q --> R1[Cargar DimPassenger]
+            Q --> R2[Cargar DimDepartureAirport]
+            Q --> R3[Cargar DimArrivalAirport]
+            Q --> R4[Cargar DimPilot]
+            Q --> R5[Cargar DimFlightStatus]
+            Q --> R6[Cargar DimDepartureDate]
+        end
+
+        CargarDimensiones --> S[Cargar FactFlight]
+        S --> T{Verificar errores}
+        T -->|Error| U[Mostrar error]
+        T -->|Éxito| V[Commit transacción]
+        V --> W[Fin proceso ETL]
+    end
+
+    Extract --> Transform
+    Transform --> Load

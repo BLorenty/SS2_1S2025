@@ -1,0 +1,35 @@
+flowchart TD
+    subgraph NormalizacionFechas["Proceso de Normalización de Fechas"]
+        A[Inicio] --> B[Crear listas vacías]
+        B --> C[Iterar sobre filas del array]
+        C --> D[Obtener string de fecha]
+        D --> E{Intentar formato mm/dd/yyyy}
+        E -->|Éxito| F[Convertir a yyyy-mm-dd]
+        E -->|Fallo| G{Intentar formato dd-mm-yyyy}
+        G -->|Éxito| F
+        G -->|Fallo| H[Usar fecha por defecto]
+        F --> I[Extraer componentes]
+        I --> J[Agregar a listas]
+        H --> J
+        J --> K[Actualizar array original]
+    end
+
+    subgraph CreacionDimensiones["Creación de Dimensiones con Arrays"]
+        L[Crear array de componentes] --> M[np.unique para eliminar duplicados]
+        M --> N[Crear array con IDs]
+        N --> O[np.column_stack para unir IDs]
+    end
+
+    subgraph MapeoIDs["Proceso de Mapeo"]
+        P[Crear diccionario de mapeo] --> Q[Iterar sobre dimensión]
+        Q --> R["Mapear {valor: idx+1}"]
+        R --> S[Usar mapeo en FactFlight]
+    end
+
+    NormalizacionFechas --> CreacionDimensiones
+    CreacionDimensiones --> MapeoIDs
+
+    classDef process fill:#f9f,stroke:#333,stroke-width:2px
+    classDef decision fill:#bbf,stroke:#333,stroke-width:2px
+    class E,G decision
+    class B,F,I,M,N,R process
