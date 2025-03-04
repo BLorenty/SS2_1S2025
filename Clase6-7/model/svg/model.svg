@@ -1,0 +1,142 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1300 950" font-family="Arial, sans-serif">
+  <!-- Estilos -->
+  <defs>
+    <filter id="shadow" x="-2" y="-2" width="104%" height="104%">
+      <feOffset result="offOut" in="SourceAlpha" dx="2" dy="2" />
+      <feGaussianBlur result="blurOut" in="offOut" stdDeviation="2" />
+      <feBlend in="SourceGraphic" in2="blurOut" mode="normal" />
+    </filter>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#333" />
+    </marker>
+  </defs>
+
+  <!-- Fondo -->
+  <rect width="100%" height="100%" fill="#f8f9fa" />
+  <text x="650" y="50" font-size="24" text-anchor="middle" font-weight="bold" fill="#333">Modelo (Galaxy) SGFood</text>
+
+  <!-- Tablas de Hechos (a los lados) -->
+  <!-- Hechos_Ventas -->
+  <rect x="130" y="350" width="240" height="180" rx="5" ry="5" fill="#fff8e1" stroke="#ff8f00" stroke-width="2" filter="url(#shadow)" />
+  <text x="250" y="375" font-size="16" text-anchor="middle" font-weight="bold" fill="#e65100">Hechos_Ventas</text>
+  <line x1="130" y1="385" x2="370" y2="385" stroke="#ff8f00" stroke-width="1" />
+  <text x="140" y="405" font-size="14" fill="#333">id_factura (PK)</text>
+  <text x="140" y="425" font-size="14" fill="#333">id_fecha (FK)</text>
+  <text x="140" y="445" font-size="14" fill="#333">id_cliente (FK)</text>
+  <text x="140" y="465" font-size="14" fill="#333">id_producto (FK)</text>
+  <text x="140" y="485" font-size="14" fill="#333">id_sucursal (FK)</text>
+  <text x="140" y="505" font-size="14" fill="#333">unidades</text>
+  <text x="140" y="525" font-size="14" fill="#333">precio_unitario</text>
+  <text x="140" y="545" font-size="14" fill="#333">id_vendedor (FK)</text>
+
+  <!-- Hechos_Compras -->
+  <rect x="930" y="350" width="240" height="160" rx="5" ry="5" fill="#fff8e1" stroke="#ff8f00" stroke-width="2" filter="url(#shadow)" />
+  <text x="1050" y="375" font-size="16" text-anchor="middle" font-weight="bold" fill="#e65100">Hechos_Compras</text>
+  <line x1="930" y1="385" x2="1170" y2="385" stroke="#ff8f00" stroke-width="1" />
+  <text x="940" y="405" font-size="14" fill="#333">id_factura (PK)</text>
+  <text x="940" y="425" font-size="14" fill="#333">id_fecha (FK)</text>
+  <text x="940" y="445" font-size="14" fill="#333">id_proveedor (FK)</text>
+  <text x="940" y="465" font-size="14" fill="#333">id_producto (FK)</text>
+  <text x="940" y="485" font-size="14" fill="#333">id_sucursal (FK)</text>
+  <text x="940" y="505" font-size="14" fill="#333">unidades</text>
+  <text x="940" y="525" font-size="14" fill="#333">costo_unitario</text>
+
+  <!-- Dimensiones compartidas (en el centro) -->
+  <!-- Dim_Producto -->
+  <rect x="530" y="280" width="240" height="120" rx="5" ry="5" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" filter="url(#shadow)" />
+  <text x="650" y="305" font-size="16" text-anchor="middle" font-weight="bold" fill="#0d47a1">Dim_Producto</text>
+  <line x1="530" y1="315" x2="770" y2="315" stroke="#1976d2" stroke-width="1" />
+  <text x="540" y="335" font-size="14" fill="#333">id_producto (PK)</text>
+  <text x="540" y="355" font-size="14" fill="#333">nombre_producto</text>
+  <text x="540" y="375" font-size="14" fill="#333">marca_producto</text>
+  <text x="540" y="395" font-size="14" fill="#333">categoria_producto</text>
+
+  <!-- Dim_Fecha -->
+  <rect x="530" y="440" width="240" height="140" rx="5" ry="5" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" filter="url(#shadow)" />
+  <text x="650" y="465" font-size="16" text-anchor="middle" font-weight="bold" fill="#0d47a1">Dim_Fecha</text>
+  <line x1="530" y1="475" x2="770" y2="475" stroke="#1976d2" stroke-width="1" />
+  <text x="540" y="495" font-size="14" fill="#333">id_fecha (PK)</text>
+  <text x="540" y="515" font-size="14" fill="#333">fecha</text>
+  <text x="540" y="535" font-size="14" fill="#333">dia</text>
+  <text x="540" y="555" font-size="14" fill="#333">mes</text>
+  <text x="540" y="575" font-size="14" fill="#333">trimestre</text>
+  <text x="540" y="595" font-size="14" fill="#333">año</text>
+  
+  <!-- Otras dimensiones -->
+  <!-- Dim_Sucursal -->
+  <rect x="530" y="100" width="240" height="140" rx="5" ry="5" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" filter="url(#shadow)" />
+  <text x="650" y="125" font-size="16" text-anchor="middle" font-weight="bold" fill="#0d47a1">Dim_Sucursal</text>
+  <line x1="530" y1="135" x2="770" y2="135" stroke="#1976d2" stroke-width="1" />
+  <text x="540" y="155" font-size="14" fill="#333">id_sucursal (PK)</text>
+  <text x="540" y="175" font-size="14" fill="#333">nombre_sucursal</text>
+  <text x="540" y="195" font-size="14" fill="#333">direccion_sucursal</text>
+  <text x="540" y="215" font-size="14" fill="#333">region</text>
+  <text x="540" y="235" font-size="14" fill="#333">departamento</text>
+
+  <!-- Dim_Cliente -->
+  <rect x="130" y="650" width="240" height="160" rx="5" ry="5" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" filter="url(#shadow)" />
+  <text x="250" y="675" font-size="16" text-anchor="middle" font-weight="bold" fill="#0d47a1">Dim_Cliente</text>
+  <line x1="130" y1="685" x2="370" y2="685" stroke="#1976d2" stroke-width="1" />
+  <text x="140" y="705" font-size="14" fill="#333">id_cliente (PK)</text>
+  <text x="140" y="725" font-size="14" fill="#333">nombre_cliente</text>
+  <text x="140" y="745" font-size="14" fill="#333">tipo_cliente</text>
+  <text x="140" y="765" font-size="14" fill="#333">direccion_cliente</text>
+  <text x="140" y="785" font-size="14" fill="#333">numero_cliente</text>
+  <text x="140" y="805" font-size="14" fill="#333">vacacionista</text>
+
+  <!-- Dim_Vendedor -->
+  <rect x="130" y="120" width="240" height="100" rx="5" ry="5" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" filter="url(#shadow)" />
+  <text x="250" y="145" font-size="16" text-anchor="middle" font-weight="bold" fill="#0d47a1">Dim_Vendedor</text>
+  <line x1="130" y1="155" x2="370" y2="155" stroke="#1976d2" stroke-width="1" />
+  <text x="140" y="175" font-size="14" fill="#333">id_vendedor (PK)</text>
+  <text x="140" y="195" font-size="14" fill="#333">nombre_vendedor</text>
+  <text x="140" y="215" font-size="14" fill="#333">vacacionista</text>
+
+  <!-- Dim_Proveedor -->
+  <rect x="930" y="650" width="240" height="140" rx="5" ry="5" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" filter="url(#shadow)" />
+  <text x="1050" y="675" font-size="16" text-anchor="middle" font-weight="bold" fill="#0d47a1">Dim_Proveedor</text>
+  <line x1="930" y1="685" x2="1170" y2="685" stroke="#1976d2" stroke-width="1" />
+  <text x="940" y="705" font-size="14" fill="#333">id_proveedor (PK)</text>
+  <text x="940" y="725" font-size="14" fill="#333">nombre_proveedor</text>
+  <text x="940" y="745" font-size="14" fill="#333">direccion_proveedor</text>
+  <text x="940" y="765" font-size="14" fill="#333">numero_proveedor</text>
+  <text x="940" y="785" font-size="14" fill="#333">web_proveedor</text>
+
+  <!-- Relaciones -->
+  <!-- Dim_Producto -> Hechos_Ventas -->
+  <path d="M530 340 L370 450" fill="none" stroke="#333" stroke-width="1.5" stroke-dasharray="4" marker-end="url(#arrow)" />
+  
+  <!-- Dim_Producto -> Hechos_Compras -->
+  <path d="M770 340 L930 450" fill="none" stroke="#333" stroke-width="1.5" stroke-dasharray="4" marker-end="url(#arrow)" />
+  
+  <!-- Dim_Fecha -> Hechos_Ventas -->
+  <path d="M530 490 L370 420" fill="none" stroke="#333" stroke-width="1.5" stroke-dasharray="4" marker-end="url(#arrow)" />
+  
+  <!-- Dim_Fecha -> Hechos_Compras -->
+  <path d="M770 490 L930 420" fill="none" stroke="#333" stroke-width="1.5" stroke-dasharray="4" marker-end="url(#arrow)" />
+  
+  <!-- Dim_Sucursal -> Hechos_Ventas -->
+  <path d="M530 170 L450 170 L450 380 L370 380" fill="none" stroke="#333" stroke-width="1.5" stroke-dasharray="4" marker-end="url(#arrow)" />
+  
+  <!-- Dim_Sucursal -> Hechos_Compras -->
+  <path d="M770 170 L850 170 L850 380 L930 380" fill="none" stroke="#333" stroke-width="1.5" stroke-dasharray="4" marker-end="url(#arrow)" />
+  
+  <!-- Dim_Cliente -> Hechos_Ventas -->
+  <path d="M250 650 L250 560" fill="none" stroke="#333" stroke-width="1.5" stroke-dasharray="4" marker-end="url(#arrow)" />
+  
+  <!-- Dim_Vendedor -> Hechos_Ventas -->
+  <path d="M250 220 L250 350" fill="none" stroke="#333" stroke-width="1.5" stroke-dasharray="4" marker-end="url(#arrow)" />
+  
+  <!-- Dim_Proveedor -> Hechos_Compras -->
+  <path d="M1050 650 L1050 540" fill="none" stroke="#333" stroke-width="1.5" stroke-dasharray="4" marker-end="url(#arrow)" />
+
+  <!-- Leyenda -->
+  <rect x="100" y="880" width="20" height="20" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" />
+  <text x="130" y="895" font-size="14" fill="#333">Tablas Dimensionales</text>
+  
+  <rect x="300" y="880" width="20" height="20" fill="#fff8e1" stroke="#ff8f00" stroke-width="2" />
+  <text x="330" y="895" font-size="14" fill="#333">Tablas de Hechos</text>
+  
+  <line x1="500" y1="880" x2="530" y2="880" stroke="#333" stroke-width="1.5" stroke-dasharray="4" marker-end="url(#arrow)" />
+  <text x="540" y="885" font-size="14" fill="#333">Relación FK</text>
+</svg>
