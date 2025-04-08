@@ -9,7 +9,6 @@ CREATE TABLE Dim_Cliente (
     tipo_cliente NVARCHAR(255),
     direccion_cliente NVARCHAR(255),
     numero_cliente NVARCHAR(100),
-    vacacionista BIT
 );
 GO
 
@@ -52,7 +51,7 @@ GO
 CREATE TABLE Dim_Vendedor (
     id_vendedor NVARCHAR(50) PRIMARY KEY,
     nombre_vendedor NVARCHAR(255),
-    vacacionista NVARCHAR(10)
+    vacacionista BIT
 );
 GO
 
